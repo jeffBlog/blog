@@ -4,7 +4,7 @@ import datetime as dt
 
 import pytest
 
-from antBlog.user.models import Role, User
+from antblog.user.models import Role, User
 
 from .factories import UserFactory
 

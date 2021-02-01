@@ -3,8 +3,8 @@
 from factory import PostGenerationMethodCall, Sequence
 from factory.alchemy import SQLAlchemyModelFactory
 
-from antBlog.database import db
-from antBlog.user.models import User
+from antblog.database import db
+from antblog.user.models import User
 
 
 class BaseFactory(SQLAlchemyModelFactory):

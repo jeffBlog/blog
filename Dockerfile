@@ -19,7 +19,7 @@ COPY package.json ./
 RUN npm install
 
 COPY webpack.config.js autoapp.py ./
-COPY antBlog antBlog
+COPY antblog antblog
 COPY assets assets
 COPY .env.example .env
 RUN npm run-script build
@@ -34,7 +34,7 @@ RUN chown -R sid:sid /app
 USER sid
 ENV PATH="/home/sid/.local/bin:${PATH}"
 
-COPY --from=builder --chown=sid:sid /app/antBlog/static /app/antBlog/static
+COPY --from=builder --chown=sid:sid /app/antblog/static /app/antblog/static
 COPY requirements requirements
 RUN pip install --no-cache --user -r requirements/prod.txt
 

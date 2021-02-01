@@ -5,8 +5,8 @@ import sys
 
 from flask import Flask, render_template
 
-from antBlog import commands, public, user
-from antBlog.extensions import (
+from antblog import commands, public, user
+from antblog.extensions import (
     bcrypt,
     cache,
     csrf_protect,
@@ -18,7 +18,7 @@ from antBlog.extensions import (
 )
 
 
-def create_app(config_object="antBlog.settings"):
+def create_app(config_object="antblog.settings"):
     """Create application factory, as explained here: http://flask.pocoo.org/docs/patterns/appfactories/.
 
     :param config_object: The configuration object to use.

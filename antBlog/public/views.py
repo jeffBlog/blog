@@ -11,11 +11,11 @@ from flask import (
 )
 from flask_login import login_required, login_user, logout_user
 
-from antBlog.extensions import login_manager
-from antBlog.public.forms import LoginForm
-from antBlog.user.forms import RegisterForm
-from antBlog.user.models import User
-from antBlog.utils import flash_errors
+from antblog.extensions import login_manager
+from antblog.public.forms import LoginForm
+from antblog.user.forms import RegisterForm
+from antblog.user.models import User
+from antblog.utils import flash_errors
 
 blueprint = Blueprint("public", __name__, static_folder="../static")
 

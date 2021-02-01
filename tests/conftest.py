@@ -6,8 +6,8 @@ import logging
 import pytest
 from webtest import TestApp
 
-from antBlog.app import create_app
-from antBlog.database import db as _db
+from antblog.app import create_app
+from antblog.database import db as _db
 
 from .factories import UserFactory
 

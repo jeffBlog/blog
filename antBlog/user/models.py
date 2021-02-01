@@ -4,8 +4,8 @@ import datetime as dt
 
 from flask_login import UserMixin
 
-from antBlog.database import Column, PkModel, db, reference_col, relationship
-from antBlog.extensions import bcrypt
+from antblog.database import Column, PkModel, db, reference_col, relationship
+from antblog.extensions import bcrypt
 
 
 class Role(PkModel):

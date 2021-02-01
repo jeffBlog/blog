@@ -50,7 +50,7 @@ env/
 /node_modules/
 
 # webpack-built files
-/antBlog/static/build/
+/antblog/static/build/
 
 # Configuration
 .env

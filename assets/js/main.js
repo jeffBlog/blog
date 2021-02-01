@@ -1,5 +1,5 @@
 /*
- * Main Javascript file for antBlog.
+ * Main Javascript file for antblog.
  *
  * This file bundles all of your javascript together using webpack.
  */

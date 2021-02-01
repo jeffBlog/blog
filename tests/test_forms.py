@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Test forms."""
 
-from antBlog.public.forms import LoginForm
-from antBlog.user.forms import RegisterForm
+from antblog.public.forms import LoginForm
+from antblog.user.forms import RegisterForm
 
 
 class TestRegisterForm:
