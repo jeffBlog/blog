@@ -2,7 +2,7 @@
 """User views."""
 from flask import Blueprint, render_template
 from flask_login import login_required
-
+import flask_praetorian
 
 blueprint = Blueprint("user", __name__, url_prefix="/users", static_folder="../static")
 
@@ -15,6 +15,7 @@ def members():
 
 
 @blueprint.route("/login", methods=["GET"])
+@flask_praetorian.auth_required
 def login():
     """List members."""
     return "ye"

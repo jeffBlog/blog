@@ -15,6 +15,7 @@ from antblog.extensions import (
     flask_static_digest,
     login_manager,
     migrate,
+    flask_praetorian,
 )
 
 
@@ -44,6 +45,7 @@ def register_extensions(app):
     debug_toolbar.init_app(app)
     migrate.init_app(app, db)
     flask_static_digest.init_app(app)
+    flask_praetorian.init_app(app, user.models.User)
     return None
 
 
