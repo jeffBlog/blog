@@ -6,6 +6,7 @@ import sys
 from flask import Flask, render_template
 
 from antblog import commands, public, user
+from antblog.user.models import User
 from antblog.extensions import (
     bcrypt,
     cache,
@@ -15,7 +16,7 @@ from antblog.extensions import (
     flask_static_digest,
     login_manager,
     migrate,
-    flask_praetorian,
+    guard,
 )
 
 
@@ -26,8 +27,9 @@ def create_app(config_object="antblog.settings"):
     """
     app = Flask(__name__.split(".")[0])
     app.config.from_object(config_object)
-    register_extensions(app)
     register_blueprints(app)
+    with app.app_context():
+        register_extensions(app)
     register_errorhandlers(app)
     register_shellcontext(app)
     register_commands(app)
@@ -40,12 +42,13 @@ def register_extensions(app):
     bcrypt.init_app(app)
     cache.init_app(app)
     db.init_app(app)
+    guard.init_app(app, User)
     csrf_protect.init_app(app)
     login_manager.init_app(app)
     debug_toolbar.init_app(app)
     migrate.init_app(app, db)
     flask_static_digest.init_app(app)
-    flask_praetorian.init_app(app, user.models.User)
+
     return None
 
 
