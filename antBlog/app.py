@@ -5,16 +5,14 @@ import sys
 
 from flask import Flask, render_template
 
-from antblog import commands, public, user
+from antblog import commands, user
 from antblog.user.models import User
 from antblog.extensions import (
     bcrypt,
     cache,
-    csrf_protect,
     db,
     debug_toolbar,
     flask_static_digest,
-    login_manager,
     migrate,
     guard,
 )
@@ -28,8 +26,17 @@ def create_app(config_object="antblog.settings"):
     app = Flask(__name__.split(".")[0])
     app.config.from_object(config_object)
     register_blueprints(app)
+    print("//////////////////////////////////////////////////////////")
     with app.app_context():
         register_extensions(app)
+        # db.create_all()
+        db.session.add(
+            User(
+                username="Maude",
+                password=guard.hash_password("andthorough"),
+            )
+        )
+        db.session.commit()
     register_errorhandlers(app)
     register_shellcontext(app)
     register_commands(app)
@@ -42,9 +49,7 @@ def register_extensions(app):
     bcrypt.init_app(app)
     cache.init_app(app)
     db.init_app(app)
-    guard.init_app(app, User)
-    csrf_protect.init_app(app)
-    login_manager.init_app(app)
+    guard.init_app(app, user.models.User)
     debug_toolbar.init_app(app)
     migrate.init_app(app, db)
     flask_static_digest.init_app(app)
@@ -54,7 +59,6 @@ def register_extensions(app):
 
 def register_blueprints(app):
     """Register Flask blueprints."""
-    app.register_blueprint(public.views.blueprint)
     app.register_blueprint(user.views.blueprint)
     return None
 
